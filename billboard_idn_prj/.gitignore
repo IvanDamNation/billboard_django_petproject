@@ -7,7 +7,7 @@ __pycache__/
 .coverage
 *.log
 db.sqlite3
-.env
+../.env
 keys.py
 build/
 node_modules/
