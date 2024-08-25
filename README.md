@@ -1,0 +1,39 @@
+This is my pet-project for Django (with CAPTCHA + REST + Angular). Inspired with practice part of book "Django. Practice of making web-cites with Python" by V.Dronov. Main idea: re-visit and remember "how-to" Django, also try-out something new.
+
+Features:
+- *init*
+
+Work plan:
+- [ ] Basic setup:
+	- [ ] design;
+	- [ ] main page; 
+	- [ ] auxiliary pages.
+- [ ] Users and access:
+	- [ ] registration/auth/deauth/delete user; 
+	- [ ] profile page;
+	- [ ] administration.
+- [ ] Rubrics:
+	- [ ] base/sup/sub rubrics;
+	- [ ] administration; 
+	- [ ] navigation.
+- [ ] Announcements: 
+	- [ ] add files support;
+	- [ ] implementation;
+	- [ ] administration;
+	- [ ] detail page;
+	- [ ] search;
+	- [ ] user's announcements;
+	- [ ] full CRUD.
+- [ ] Comments:
+	- [ ] CAPTCHA setup;
+	- [ ] implementation;
+	- [ ] new comment notification.
+- [ ] REST web service: 
+	- [ ] setup;
+	- [ ] project REST-adaptation.
+- [ ] Angular try-out: 
+	- [ ] base layout;
+	- [ ] switching;
+	- [ ] filters;
+	- [ ] directives;
+	- [ ] data linking.
