@@ -9,7 +9,7 @@ Work plan:
 	- [ ] main page; 
 	- [ ] auxiliary pages.
 - [ ] Users and access:
-	- [ ] registration/auth/deauth/delete user; 
+	- [ ] registration/auth/deauth/delete of user; 
 	- [ ] profile page;
 	- [ ] administration.
 - [ ] Rubrics:
@@ -33,7 +33,10 @@ Work plan:
 	- [ ] project REST-adaptation.
 - [ ] Angular try-out: 
 	- [ ] base layout;
-	- [ ] switching;
+	- [ ] routing;
 	- [ ] filters;
 	- [ ] directives;
 	- [ ] data linking.
+	
+
+Made by IvanDamNation (a.k.a. IDN) GNU General Public License v3, 2024.

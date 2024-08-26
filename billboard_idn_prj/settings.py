@@ -44,7 +44,9 @@ DJANGO_APPS = [
     'django.contrib.staticfiles',
 ]
 
-LIBS_APPS = []
+LIBS_APPS = [
+    'bootstrap4',
+]
 
 PROJECT_APPS = [
     'main.apps.MainConfig',
