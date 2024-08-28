@@ -4,10 +4,10 @@ Features:
 - *init*
 
 Work plan:
-- [ ] Basic setup:
-	- [ ] design;
-	- [ ] main page; 
-	- [ ] auxiliary pages.
+- [x] Basic setup:
+	- [x] design;
+	- [x] main page; 
+	- [x] additional pages.
 - [ ] Users and access:
 	- [ ] registration/auth/deauth/delete of user; 
 	- [ ] profile page;
