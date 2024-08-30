@@ -114,6 +114,8 @@ AUTH_PASSWORD_VALIDATORS = [
     },
 ]
 
+# Auth settings
+AUTH_USER_MODEL = 'main.AdvUser'
 
 # Internationalization
 # https://docs.djangoproject.com/en/5.1/topics/i18n/
