@@ -10,7 +10,7 @@ Work plan:
 	- [x] additional pages.
 - [ ] Users and access:
 	- [ ] registration/auth/deauth/delete of user; 
-	- [ ] profile page;
+	- [x] profile page;
 	- [ ] administration.
 - [ ] Rubrics:
 	- [ ] base/sup/sub rubrics;
