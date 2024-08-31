@@ -1,7 +1,12 @@
+from django.contrib.auth.views import LoginView
 from django.http import HttpResponse, Http404
 from django.template import TemplateDoesNotExist
 from django.template.loader import get_template
 from django.shortcuts import render
+
+
+class BBLoginView(LoginView):
+    template_name = 'main/login.html'
 
 
 def index(request):
