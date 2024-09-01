@@ -9,7 +9,7 @@ Work plan:
 	- [x] main page; 
 	- [x] additional pages.
 - [ ] Users and access:
-	- [ ] CRUD of user; 
+	- [x] CRUD of user; 
 	- [x] profile page;
 	- [ ] administration.
 - [ ] Rubrics:
