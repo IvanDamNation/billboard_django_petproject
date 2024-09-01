@@ -9,7 +9,7 @@ Work plan:
 	- [x] main page; 
 	- [x] additional pages.
 - [ ] Users and access:
-	- [ ] registration/auth/deauth/delete of user; 
+	- [ ] CRUD of user; 
 	- [x] profile page;
 	- [ ] administration.
 - [ ] Rubrics:
