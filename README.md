@@ -1,7 +1,9 @@
 This is my pet-project for Django (with CAPTCHA + REST + Angular). Inspired with practice part of book "Django. Practice of making web-cites with Python" by V.Dronov. Main idea: re-visit and remember "how-to" Django, also try-out something new.
 
 Features:
-- *init*
+- Custom Bootstrap4 design
+- Custom users full CRUD profile with email activation
+- *in progress...*
 
 Work plan:
 - [x] Basic setup:
