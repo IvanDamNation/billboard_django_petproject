@@ -1,8 +1,8 @@
 This is my pet-project for Django (with CAPTCHA + REST + Angular). Inspired with practice part of book "Django. Practice of making web-cites with Python" by V.Dronov. Main idea: re-visit and remember "how-to" Django, also try-out something new.
 
 Features:
-- Custom Bootstrap4 design
-- Custom users full CRUD profile with email activation
+- Custom Bootstrap4 design;
+- Custom users full CRUD profile with email activation and administration functionality;
 - *in progress...*
 
 Work plan:
@@ -10,10 +10,10 @@ Work plan:
 	- [x] design;
 	- [x] main page; 
 	- [x] additional pages.
-- [ ] Users and access:
+- [x] Users and access:
 	- [x] CRUD of user; 
 	- [x] profile page;
-	- [ ] administration.
+	- [x] administration.
 - [ ] Rubrics:
 	- [ ] base/sup/sub rubrics;
 	- [ ] administration; 
