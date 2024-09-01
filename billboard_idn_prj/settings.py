@@ -88,13 +88,7 @@ WSGI_APPLICATION = 'billboard_idn_prj.wsgi.application'
 # Database
 # https://docs.djangoproject.com/en/5.1/ref/settings/#databases
 
-DATABASES = {
-    'default': {
-        'ENGINE': 'django.db.backends.sqlite3',
-        'NAME': BASE_DIR / 'billboard.data',
-    }
-}
-
+DATABASES = {'default': env.dj_db_url("DATABASE_URL", default="sqlite:///billboard.data")}
 
 # Password validation
 # https://docs.djangoproject.com/en/5.1/ref/settings/#auth-password-validators
@@ -120,9 +114,9 @@ AUTH_USER_MODEL = 'main.AdvUser'
 # Internationalization
 # https://docs.djangoproject.com/en/5.1/topics/i18n/
 
-LANGUAGE_CODE = 'ru'
+LANGUAGE_CODE = env.str("LANGUAGE_CODE", default='en')
 
-TIME_ZONE = 'UTC'
+TIME_ZONE = env.str("TIME_ZONE", default='UTC')
 
 USE_I18N = True
 
@@ -132,7 +126,7 @@ USE_TZ = True
 # Static files (CSS, JavaScript, Images)
 # https://docs.djangoproject.com/en/5.1/howto/static-files/
 
-STATIC_URL = 'static/'
+STATIC_URL = env.str("STATIC_URL", default='static/')
 
 # Default primary key field type
 # https://docs.djangoproject.com/en/5.1/ref/settings/#default-auto-field
@@ -141,4 +135,4 @@ DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
 
 # Email config
 
-EMAIL_PORT = 1025
+EMAIL_PORT = env.int("EMAIL_PORT", default=1025)
