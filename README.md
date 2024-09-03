@@ -15,7 +15,7 @@ Work plan:
 	- [x] profile page;
 	- [x] administration.
 - [ ] Rubrics:
-	- [ ] base/sup/sub rubrics;
+	- [x] base/sup/sub rubrics models;
 	- [ ] administration; 
 	- [ ] navigation.
 - [ ] Announcements: 
