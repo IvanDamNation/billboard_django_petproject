@@ -16,7 +16,7 @@ Work plan:
 	- [x] administration.
 - [ ] Rubrics:
 	- [x] base/sup/sub rubrics models;
-	- [ ] administration; 
+	- [x] administration; 
 	- [ ] navigation.
 - [ ] Announcements: 
 	- [ ] add files support;
