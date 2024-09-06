@@ -84,6 +84,10 @@ def index(request):
     return render(request, 'main/index.html')
 
 
+def by_rubric(request, pk):
+    pass
+
+
 @login_required
 def profile(request):
     return render(request, 'main/profile.html')

@@ -14,10 +14,10 @@ Work plan:
 	- [x] CRUD of user; 
 	- [x] profile page;
 	- [x] administration.
-- [ ] Rubrics:
+- [x] Rubrics:
 	- [x] base/sup/sub rubrics models;
 	- [x] administration; 
-	- [ ] navigation.
+	- [x] navigation.
 - [ ] Announcements: 
 	- [ ] add files support;
 	- [ ] implementation;
