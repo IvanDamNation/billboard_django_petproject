@@ -9,7 +9,7 @@ https://docs.djangoproject.com/en/5.1/topics/settings/
 For the full list of settings and their values, see
 https://docs.djangoproject.com/en/5.1/ref/settings/
 """
-
+import os.path
 from pathlib import Path
 
 from environs import Env
@@ -46,6 +46,8 @@ DJANGO_APPS = [
 
 LIBS_APPS = [
     'bootstrap4',
+    'django_cleanup',
+    'easy_thumbnails',
 ]
 
 PROJECT_APPS = [
@@ -135,5 +137,21 @@ STATIC_URL = env.str("STATIC_URL", default='static/')
 DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
 
 # Email config
-
 EMAIL_PORT = env.int("EMAIL_PORT", default=1025)
+
+# Media config
+MEDIA_ROOT = os.path.join(BASE_DIR, 'media')
+MEDIA_URL = '/media/'
+
+# Thumbnails config
+THUMBNAIL_DEFAULT_STORAGE_ALIAS = 'default'
+THUMBNAIL_BASEDIR = 'thumbnails'
+
+THUMBNAIL_ALIASES = {
+    '': {
+        'default': {
+            'size': (96, 96),
+            'crop': 'scale',
+        }
+    }
+}
