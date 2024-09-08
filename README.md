@@ -21,7 +21,7 @@ Work plan:
 - [ ] Announcements: 
 	- [x] add files support;
 	- [x] implementation;
-	- [ ] administration;
+	- [x] administration;
 	- [ ] detail page;
 	- [ ] search;
 	- [ ] user's announcements;
