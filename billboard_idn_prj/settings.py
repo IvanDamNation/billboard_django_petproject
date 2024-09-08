@@ -32,6 +32,7 @@ SECRET_KEY = env.str("SECRET_KEY")
 DEBUG = env.bool("DEBUG", default=False)
 
 ALLOWED_HOSTS = env.str("ALLOWED_HOSTS").split(" ")
+APP_PORT = env.str("APP_PORT")
 
 
 # Application definition
@@ -141,7 +142,7 @@ EMAIL_PORT = env.int("EMAIL_PORT", default=1025)
 
 # Media config
 MEDIA_ROOT = os.path.join(BASE_DIR, 'media')
-MEDIA_URL = '/media/'
+MEDIA_URL = env.str("MEDIA_URL", default='/media/')
 
 # Thumbnails config
 THUMBNAIL_DEFAULT_STORAGE_ALIAS = 'default'
@@ -155,3 +156,7 @@ THUMBNAIL_ALIASES = {
         }
     }
 }
+
+
+# Preferences config
+SEARCH_PAGINATION = env.int("SEARCH_PAGINATION", default=2)

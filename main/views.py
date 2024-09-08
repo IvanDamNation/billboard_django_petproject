@@ -4,7 +4,9 @@ from django.contrib.auth.decorators import login_required
 from django.contrib.auth.mixins import LoginRequiredMixin
 from django.contrib.auth.views import LoginView, LogoutView, PasswordChangeView
 from django.contrib.messages.views import SuccessMessageMixin
+from django.core.paginator import Paginator
 from django.core.signing import BadSignature
+from django.db.models import Q
 from django.http import HttpResponse, Http404
 from django.shortcuts import render, get_object_or_404
 from django.template import TemplateDoesNotExist
@@ -13,8 +15,9 @@ from django.urls import reverse_lazy
 from django.views.generic.base import TemplateView
 from django.views.generic.edit import CreateView, UpdateView, DeleteView
 
-from .forms import ChangeUserInfoForm, RegisterUserForm
-from .models import AdvUser
+from billboard_idn_prj.settings import SEARCH_PAGINATION
+from .forms import ChangeUserInfoForm, RegisterUserForm, SearchForm
+from .models import AdvUser, SubRubric, Billboard
 from .utilities import signer
 
 
@@ -85,7 +88,28 @@ def index(request):
 
 
 def by_rubric(request, pk):
-    pass
+    rubric = get_object_or_404(SubRubric, pk=pk)
+    announcement_search = Billboard.objects.filter(is_active=True, rubric=pk)
+    if 'keyword' in request.GET:
+        keyword = request.GET['keyword']
+        q = Q(title__icontains=keyword) | Q(content_icontains=keyword)
+        announcement_search = announcement_search.filter(q)
+    else:
+        keyword = ''
+    form = SearchForm(initial={'keyword': keyword})
+    paginator = Paginator(announcement_search, SEARCH_PAGINATION)
+    if 'page' in request.GET:
+        page_num = request.GET['page']
+    else:
+        page_num = 1
+    page = paginator.get_page(page_num)
+    context = {
+        'rubric': rubric,
+        'page': page,
+        'announcement_search': page.object_list,
+        'form': form
+    }
+    return render(request, 'main/by_rubric.html', context)
 
 
 @login_required
