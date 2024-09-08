@@ -157,6 +157,5 @@ THUMBNAIL_ALIASES = {
     }
 }
 
-
 # Preferences config
 SEARCH_PAGINATION = env.int("SEARCH_PAGINATION", default=2)

@@ -23,7 +23,7 @@ Work plan:
 	- [x] implementation;
 	- [x] administration;
 	- [ ] detail page;
-	- [ ] search;
+	- [x] search;
 	- [ ] user's announcements;
 	- [ ] full CRUD.
 - [ ] Comments:

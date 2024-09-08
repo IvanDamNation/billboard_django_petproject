@@ -92,7 +92,7 @@ def by_rubric(request, pk):
     announcement_search = Billboard.objects.filter(is_active=True, rubric=pk)
     if 'keyword' in request.GET:
         keyword = request.GET['keyword']
-        q = Q(title__icontains=keyword) | Q(content_icontains=keyword)
+        q = Q(title__icontains=keyword) | Q(content__icontains=keyword)
         announcement_search = announcement_search.filter(q)
     else:
         keyword = ''
