@@ -20,7 +20,7 @@ Work plan:
 	- [x] navigation.
 - [ ] Announcements: 
 	- [x] add files support;
-	- [ ] implementation;
+	- [x] implementation;
 	- [ ] administration;
 	- [ ] detail page;
 	- [ ] search;
