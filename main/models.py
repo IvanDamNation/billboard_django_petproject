@@ -8,7 +8,12 @@ class AdvUser(AbstractUser):
     is_activated = models.BooleanField(default=True, db_index=True, verbose_name='Активация пройдена?')
     send_messages = models.BooleanField(default=True, verbose_name='Оповещать о новых комментариях?')
 
-    class Meta:
+    def delete(self, *args, **kwargs):
+        for announcement in self.billboard_set.all():
+            announcement.delete()
+        super().delete(*args, **kwargs)
+
+    class Meta(AbstractUser.Meta):
         pass
 
 
