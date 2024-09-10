@@ -22,7 +22,7 @@ Work plan:
 	- [x] add files support;
 	- [x] implementation;
 	- [x] administration;
-	- [ ] detail page;
+	- [x] detail page;
 	- [x] search;
 	- [ ] user's announcements;
 	- [ ] full CRUD.

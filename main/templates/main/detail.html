@@ -1,0 +1,32 @@
+{% extends "layout/basic.html" %}
+
+{% block title %}{{ billboard.title }} - {{ billboard.rubric.name }}{% endblock title %}
+
+{% block content %}
+<div class="container-fluid mt-3">
+    <div class="row">
+        {% if billboard.image %}
+        <div class="col-md-auto">
+            <img class="main-image" src="{{ billboard.image.url }}" alt="Фото товара">
+        </div>
+        {% endif %}
+        <div class="col">
+            <h2>{{ billboard.title }}</h2>
+            <p>{{ billboard.content }}</p>
+            <p class="font-weight-bold">{{ billboard.price }} руб.</p>
+            <p>{{ billboard.contacts }}</p>
+            <p class="text-right font-italic">Добавлено {{ billboard.created_at }}</p>
+        </div>
+    </div>
+</div>
+{% if additional_images %}
+<div class="d-flex justify-content-between flex-wrap mt-5">
+    {% for additional_image in additional_images %}
+    <div>
+        <img class="additional-image" src="{{ additional_image.image.url }}" alt="Дополнительное фото">
+    </div>
+    {% endfor %}
+</div>
+{% endif %}
+<p><a href="{% url 'main:by_rubric' pk=billboard.rubric.pk %}">Назад</a></p>
+{% endblock content %}

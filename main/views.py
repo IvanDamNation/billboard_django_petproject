@@ -112,6 +112,13 @@ def by_rubric(request, pk):
     return render(request, 'main/by_rubric.html', context)
 
 
+def detail(request, rubric_pk, pk):
+    billboard = get_object_or_404(Billboard, pk=pk)
+    additional_images = billboard.additionalimage_set.all()
+    context = {'billboard': billboard, 'additional_images': additional_images}
+    return render(request, 'main/detail.html', context)
+
+
 @login_required
 def profile(request):
     return render(request, 'main/profile.html')
