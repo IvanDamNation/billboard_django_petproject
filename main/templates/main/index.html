@@ -1,5 +1,33 @@
 {% extends 'layout/basic.html' %}
 
+{% load thumbnail %}
+{% load static %}
+{% load bootstrap4 %}
+
 {% block content %}
 <h2>Последние 10 объявлений</h2>
+{% if last_10 %}
+<ul class="list-unstyled">
+    {% for announcement in last_10 %}
+    <li class="media my-5 p-3 border">
+        {% url 'main:detail' rubric_pk=announcement.rubric.pk pk=announcement.pk as url %}
+        <a href="{{ url }}{{ all }}">
+            {% if announcement.image %}
+            <img class="mr-3" src="{% thumbnail announcement.image 'default' %}">
+            {% else %}
+            <img class="mr-3" src="{% static 'main/empty.png' %}" alt="Нет картинки">
+            {% endif %}
+        </a>
+        <div class="media-body">
+            <h3>
+                <a href="{{ url }}{{ all }}">{{ announcement.title }}</a>
+            </h3>
+            <div>{{ announcement.content }}</div>
+            <p class="text-right font-weight-bold">{{ announcement.price }} руб.</p>
+            <p class="text-right font-italic">{{ announcement.created_at }}</p>
+        </div>
+    </li>
+    {% endfor %}
+</ul>
+{% endif %}
 {% endblock content %}

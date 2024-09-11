@@ -1,3 +1,5 @@
+from lib2to3.fixes.fix_input import context
+
 from django.contrib import messages
 from django.contrib.auth import logout
 from django.contrib.auth.decorators import login_required
@@ -84,7 +86,9 @@ class DeleteUserView(LoginRequiredMixin, DeleteView):
 
 
 def index(request):
-    return render(request, 'main/index.html')
+    last_10 = Billboard.objects.filter(is_active=True)[:10]
+    context = {'last_10': last_10}
+    return render(request, 'main/index.html', context)
 
 
 def by_rubric(request, pk):
