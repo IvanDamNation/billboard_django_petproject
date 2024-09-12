@@ -125,7 +125,17 @@ def detail(request, rubric_pk, pk):
 
 @login_required
 def profile(request):
-    return render(request, 'main/profile.html')
+    user_announcements = Billboard.objects.filter(author=request.user.pk)
+    context = {'user_announcements': user_announcements}
+    return render(request, 'main/profile.html', context)
+
+
+@login_required
+def profile_detail(request, pk):
+    billboard = get_object_or_404(Billboard, pk=pk)
+    additional_images = billboard.additionalimage_set.all()
+    context = {'billboard': billboard, 'additional_images': additional_images}
+    return render(request, 'main/profile_detail.html', context)
 
 
 def user_activate(request, sign):

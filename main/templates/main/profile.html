@@ -1,5 +1,9 @@
 {% extends "layout/basic.html" %}
 
+{% load thumbnail %}
+{% load static %}
+{% load bootstrap4 %}
+
 {% block title %}Профиль пользователя{% endblock title %}
 
 {% block content %}
@@ -10,4 +14,28 @@
 <p>Здравствуйте!</p>
 {% endif %}
 <h3>Ваши объявления</h3>
+{% if user_announcements %}
+<ul class="list-unstyled">
+    {% for announcement in user_announcements %}
+    <li class="media my-5 p-3 border">
+        {% url 'main:profile_detail' pk=announcement.pk as url %}
+        <a href="{{ url }}{{ all }}">
+            {% if announcement.image %}
+            <img class="mr-3" src="{% thumbnail announcement.image 'default' %}">
+            {% else %}
+            <img class="mr-3" src="{% static 'main/empty.png' %}" alt="Нет картинки">
+            {% endif %}
+        </a>
+        <div class="media-body">
+            <h3>
+                <a href="{{ url }}{{ all }}">{{ announcement.title }}</a>
+            </h3>
+            <div>{{ announcement.content }}</div>
+            <p class="text-right font-weight-bold">{{ announcement.price }} руб.</p>
+            <p class="text-right font-italic">{{ announcement.created_at }}</p>
+        </div>
+    </li>
+    {% endfor %}
+</ul>
+{% endif %}
 {% endblock content %}
