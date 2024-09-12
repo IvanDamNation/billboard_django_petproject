@@ -3,6 +3,7 @@ This is my pet-project for Django (with CAPTCHA + REST + Angular). Inspired with
 Features:
 - Custom Bootstrap4 design;
 - Custom users full CRUD profile with email activation and administration functionality;
+- Auto thumbnails generation for announcements;
 - *in progress...*
 
 Work plan:
@@ -24,7 +25,7 @@ Work plan:
 	- [x] administration;
 	- [x] detail page;
 	- [x] search;
-	- [ ] user's announcements;
+	- [x] user's announcements;
 	- [ ] full CRUD.
 - [ ] Comments:
 	- [ ] CAPTCHA setup;

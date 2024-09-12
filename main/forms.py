@@ -1,9 +1,10 @@
 from django import forms
 from django.contrib.auth import password_validation
 from django.core.exceptions import ValidationError
+from django.forms import inlineformset_factory
 
 from .apps import user_registered
-from .models import AdvUser, SuperRubric, SubRubric
+from .models import AdditionalImage, AdvUser, Billboard, SuperRubric, SubRubric
 
 
 class ChangeUserInfoForm(forms.ModelForm):
@@ -73,3 +74,13 @@ class SubRubricForm(forms.ModelForm):
 
 class SearchForm(forms.Form):
     keyword = forms.CharField(required=False, max_length=20, label='')
+
+
+class BillboardForm(forms.ModelForm):
+    class Meta:
+        model = Billboard
+        fields = '__all__'
+        widgets = {'author': forms.HiddenInput}
+
+
+AdditionalImageFormset = inlineformset_factory(Billboard, AdditionalImage, fields='__all__')

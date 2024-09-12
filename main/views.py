@@ -1,5 +1,3 @@
-from lib2to3.fixes.fix_input import context
-
 from django.contrib import messages
 from django.contrib.auth import logout
 from django.contrib.auth.decorators import login_required
@@ -158,7 +156,7 @@ def user_activate(request, sign):
 
 def other_page(request, page):
     try:
-        template = get_template('main/' + page + '.html')
+        template = get_template(f"main/{page}.html")
     except TemplateDoesNotExist:
         raise Http404
 
