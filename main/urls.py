@@ -2,12 +2,14 @@ from django.urls import path
 
 from .views import (BBLoginView, BBLogoutView, ChangeUserInfoView, BBPasswordChangeView,
                     RegisterUserView, RegisterDoneView, DeleteUserView,
-                    index, by_rubric, detail, profile, profile_detail, user_activate, other_page)
+                    index, by_rubric, detail, profile, profile_detail,
+                    announcement_add, user_activate, other_page)
 
 app_name = 'main'
 urlpatterns = [
     path('accounts/profile/change/', ChangeUserInfoView.as_view(), name='profile_change'),
     path('accounts/profile/delete/', DeleteUserView.as_view(), name='profile_delete'),
+    path('accounts/profile/add/', announcement_add, name='announcement_add'),
     path('accounts/profile/<int:pk>/', profile_detail, name='profile_detail'),
     path('accounts/profile/', profile, name='profile'),
     path('accounts/login/', BBLoginView.as_view(), name='login'),

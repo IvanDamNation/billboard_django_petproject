@@ -1,3 +1,5 @@
+from lib2to3.fixes.fix_input import context
+
 from django.contrib import messages
 from django.contrib.auth import logout
 from django.contrib.auth.decorators import login_required
@@ -8,7 +10,7 @@ from django.core.paginator import Paginator
 from django.core.signing import BadSignature
 from django.db.models import Q
 from django.http import HttpResponse, Http404
-from django.shortcuts import render, get_object_or_404
+from django.shortcuts import render, get_object_or_404, redirect
 from django.template import TemplateDoesNotExist
 from django.template.loader import get_template
 from django.urls import reverse_lazy
@@ -16,7 +18,7 @@ from django.views.generic.base import TemplateView
 from django.views.generic.edit import CreateView, UpdateView, DeleteView
 
 from billboard_idn_prj.settings import SEARCH_PAGINATION
-from .forms import ChangeUserInfoForm, RegisterUserForm, SearchForm
+from .forms import ChangeUserInfoForm, RegisterUserForm, SearchForm, BillboardForm, AdditionalImageFormset
 from .models import AdvUser, SubRubric, Billboard
 from .utilities import signer
 
@@ -135,6 +137,23 @@ def profile_detail(request, pk):
     context = {'billboard': billboard, 'additional_images': additional_images}
     return render(request, 'main/profile_detail.html', context)
 
+
+@login_required
+def announcement_add(request):
+    if request.method == 'POST':
+        form = BillboardForm(request.POST, request.FILES)
+        if form.is_valid():
+            announcement = form.save()
+            formset = AdditionalImageFormset(request.POST, request.FILES, instance=announcement)
+            if formset.is_valid():
+                formset.save()
+                messages.add_message(request, messages.SUCCESS, 'Объявление добавлено')
+                return redirect('main:profile')
+    else:
+        form = BillboardForm(initial={'author': request.user.pk})
+        formset = AdditionalImageFormset()
+    context = {'form': form, 'formset': formset}
+    return render(request, 'main/announcement_add.html', context)
 
 def user_activate(request, sign):
     try:
