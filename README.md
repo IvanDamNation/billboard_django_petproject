@@ -19,14 +19,14 @@ Work plan:
 	- [x] base/sup/sub rubrics models;
 	- [x] administration; 
 	- [x] navigation.
-- [ ] Announcements: 
+- [x] Announcements: 
 	- [x] add files support;
 	- [x] implementation;
 	- [x] administration;
 	- [x] detail page;
 	- [x] search;
 	- [x] user's announcements;
-	- [ ] full CRUD.
+	- [x] full CRUD.
 - [ ] Comments:
 	- [ ] CAPTCHA setup;
 	- [ ] implementation;

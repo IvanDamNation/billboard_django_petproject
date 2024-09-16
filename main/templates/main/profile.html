@@ -36,6 +36,10 @@
             <div>{{ announcement.content }}</div>
             <p class="text-right font-weight-bold">{{ announcement.price }} руб.</p>
             <p class="text-right font-italic">{{ announcement.created_at }}</p>
+            <p class="text-right mt-2">
+                <a href="{% url 'main:announcement_change' pk=announcement.pk %}">Исправить</a>
+                <a href="{% url 'main:announcement_delete' pk=announcement.pk %}">Удалить</a>
+            </p>
         </div>
     </li>
     {% endfor %}

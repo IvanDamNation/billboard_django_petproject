@@ -155,6 +155,38 @@ def announcement_add(request):
     context = {'form': form, 'formset': formset}
     return render(request, 'main/announcement_add.html', context)
 
+
+@login_required
+def announcement_change(request, pk):
+    announcement = get_object_or_404(Billboard, pk=pk)
+    if request.method == 'POST':
+        form = BillboardForm(request.POST, request.FILES, instance=announcement)
+        if form.is_valid():
+            announcement = form.save()
+            formset = AdditionalImageFormset(request.POST, request.FILES, instance=announcement)
+            if formset.is_valid():
+                formset.save()
+                messages.add_message(request, messages.SUCCESS, 'Объявление исправлено')
+                return redirect('main:profile')
+    else:
+        form = BillboardForm(instance=announcement)
+        formset = AdditionalImageFormset(instance=announcement)
+    context = {'form': form, 'formset': formset}
+    return render(request, 'main/announcement_change.html', context)
+
+
+@login_required
+def announcement_delete(request, pk):
+    announcement = get_object_or_404(Billboard, pk=pk)
+    if request.method == 'POST':
+        announcement.delete()
+        messages.add_message(request, messages.SUCCESS, 'Объявление удалено')
+        return redirect('main:profile')
+    else:
+        context = {'announcement': announcement}
+        return render(request, 'main/announcement_delete.html', context)
+
+
 def user_activate(request, sign):
     try:
         username = signer.unsign(sign)
