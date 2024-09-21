@@ -28,7 +28,7 @@ Work plan:
 	- [x] user's announcements;
 	- [x] full CRUD.
 - [ ] Comments:
-	- [ ] CAPTCHA setup;
+	- [x] CAPTCHA setup;
 	- [ ] implementation;
 	- [ ] new comment notification.
 - [ ] REST web service: 

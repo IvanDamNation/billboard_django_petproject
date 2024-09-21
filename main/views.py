@@ -1,5 +1,3 @@
-from lib2to3.fixes.fix_input import context
-
 from django.contrib import messages
 from django.contrib.auth import logout
 from django.contrib.auth.decorators import login_required
