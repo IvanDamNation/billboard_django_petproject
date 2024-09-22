@@ -30,4 +30,5 @@ yarn-error.log*
 # Static
 staticfiles
 mediafiles
-media
+media/*
+!media/.gitkeep
