@@ -10,14 +10,16 @@ from django.db.models import Q
 from django.http import HttpResponse, Http404
 from django.shortcuts import render, get_object_or_404, redirect
 from django.template import TemplateDoesNotExist
+from django.template.defaulttags import comment
 from django.template.loader import get_template
 from django.urls import reverse_lazy
 from django.views.generic.base import TemplateView
 from django.views.generic.edit import CreateView, UpdateView, DeleteView
 
 from billboard_idn_prj.settings import SEARCH_PAGINATION
-from .forms import ChangeUserInfoForm, RegisterUserForm, SearchForm, BillboardForm, AdditionalImageFormset
-from .models import AdvUser, SubRubric, Billboard
+from .forms import (ChangeUserInfoForm, RegisterUserForm, SearchForm, UserCommentForm,
+                    GuestCommentForm, BillboardForm, AdditionalImageFormset)
+from .models import AdvUser, SubRubric, Billboard, Comment
 from .utilities import signer
 
 
@@ -117,7 +119,28 @@ def by_rubric(request, pk):
 def detail(request, rubric_pk, pk):
     billboard = get_object_or_404(Billboard, pk=pk)
     additional_images = billboard.additionalimage_set.all()
-    context = {'billboard': billboard, 'additional_images': additional_images}
+    comments = Comment.objects.filter(announcement=pk, is_active=True)
+    initial = {'announcement': billboard.pk}
+    if request.user.is_authenticated:
+        initial['author'] = request.user.username
+        form_class = UserCommentForm
+    else:
+        form_class = GuestCommentForm
+    form = form_class(initial=initial)
+    if request.method == 'POST':
+        comment_form = form_class(request.POST)
+        if comment_form.is_valid():
+            comment_form.save()
+            messages.add_message(request, messages.SUCCESS, 'Комментарий добавлен')
+        else:
+            form = comment_form
+            messages.add_message(request, messages.WARNING, 'Комментарий не добавлен')
+    context = {
+        'billboard': billboard,
+        'additional_images': additional_images,
+        'comments': comments,
+        'form': form
+    }
     return render(request, 'main/detail.html', context)
 
 
