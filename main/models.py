@@ -1,7 +1,8 @@
 from django.contrib.auth.models import AbstractUser
 from django.db import models
+from django.db.models.signals import post_save
 
-from .utilities import get_timestamp_path
+from .utilities import get_timestamp_path, send_new_comment_notification
 
 
 class AdvUser(AbstractUser):
@@ -71,6 +72,9 @@ class Billboard(models.Model):
     is_active = models.BooleanField(default=True, db_index=True, verbose_name='Выводить в списке?')
     created_at = models.DateTimeField(auto_now_add=True, db_index=True, verbose_name='Опубликовано')
 
+    def __str__(self):
+        return f"{self.title}"
+
     def delete(self, *args, **kwargs):
         for image in self.additionalimage_set.all():
             image.delete()
@@ -98,7 +102,19 @@ class Comment(models.Model):
     is_active = models.BooleanField(default=True, db_index=True, verbose_name='Отображать?')
     created_at = models.DateTimeField(auto_now_add=True, db_index=True, verbose_name='Опубликован')
 
+    def __str__(self):
+        return f"{self.author} - {self.announcement}"
+
     class Meta:
         verbose_name = 'Комментарий'
         verbose_name_plural = 'Комментарии'
         ordering = ['created_at']
+
+
+def post_save_dispatcher(sender, **kwargs):
+    author = kwargs['instance'].announcement.author
+    if kwargs['created'] and author.send_messages:
+        send_new_comment_notification(kwargs['instance'])
+
+
+post_save.connect(post_save_dispatcher, sender=Comment)

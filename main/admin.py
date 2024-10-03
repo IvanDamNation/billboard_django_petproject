@@ -2,8 +2,8 @@ import datetime
 
 from django.contrib import admin
 
-from .forms import SubRubricForm
-from .models import AdvUser, SuperRubric, SubRubric, Billboard, AdditionalImage
+from .forms import SubRubricForm, UserCommentForm, GuestCommentForm
+from .models import AdvUser, SuperRubric, SubRubric, Billboard, AdditionalImage, Comment
 from .utilities import send_activation_notification
 
 
@@ -77,7 +77,14 @@ class BillboardAdmin(admin.ModelAdmin):
     inlines = (AdditionalImageInline,)
 
 
+class CommentAdmin(admin.ModelAdmin):
+    list_display = ('announcement', 'author')
+    search_fields = ('announcement', 'author')
+    readonly_fields = ('announcement', 'created_at')
+
+
 admin.site.register(AdvUser, AdvUserAdmin)
 admin.site.register(SuperRubric, SuperRubricAdmin)
 admin.site.register(SubRubric, SubRubricAdmin)
 admin.site.register(Billboard, BillboardAdmin)
+admin.site.register(Comment, CommentAdmin)

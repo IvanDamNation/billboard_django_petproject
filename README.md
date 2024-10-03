@@ -27,10 +27,10 @@ Work plan:
 	- [x] search;
 	- [x] user's announcements;
 	- [x] full CRUD.
-- [ ] Comments:
+- [x] Comments:
 	- [x] CAPTCHA setup;
 	- [x] implementation;
-	- [ ] new comment notification.
+	- [x] new comment notification.
 - [ ] REST web service: 
 	- [ ] setup;
 	- [ ] project REST-adaptation.
