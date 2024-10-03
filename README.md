@@ -29,7 +29,7 @@ Work plan:
 	- [x] full CRUD.
 - [ ] Comments:
 	- [x] CAPTCHA setup;
-	- [ ] implementation;
+	- [x] implementation;
 	- [ ] new comment notification.
 - [ ] REST web service: 
 	- [ ] setup;
